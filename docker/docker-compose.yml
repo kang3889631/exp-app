@@ -1,0 +1,57 @@
+version: "3.7" # https://docs.docker.com/compose/compose-file/
+
+volumes:
+    mysql-config:
+        labels:
+            com.example.mysql-config.description: MySQL config
+            com.example.mysql-config.department: DevOps
+    mysql-data:
+        labels:
+            com.example.mysql-data.description: MySQL datadir
+            com.example.mysql-data.department: DevOps
+
+networks:
+    back:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 169.254.0.0/28
+
+services:
+    myubun:
+        build:
+            context: .
+            #network: host
+            dockerfile: image/myubun/Dockerfile
+            #args:
+            #    MYSQL_TAG: ${MYSQL_TAG}
+        image: ${COMPOSE_PROJECT_NAME}/ubuntu:groovy-20200505
+        networks:
+            - back
+        tty: true
+    mysql:
+        build:
+            context: .
+            #network: host
+            dockerfile: image/mysql/Dockerfile
+            args:
+                MYSQL_TAG: ${MYSQL_TAG}
+        image: ${COMPOSE_PROJECT_NAME}/${MYSQL_TAG}
+        #network_mode: host
+        networks:
+            - back
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql-config:/etc/mysql
+            - mysql-data:/var/lib/mysql
+        environment:
+            #- TZ=Asia/Shanghai
+            #- MYSQL_ALLOW_EMPTY_PASSWORD=true
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        #command: mysqld --skip-grant-tables
+        #command: mysqld --bind-address=0.0.0.0 --port=3306 --mysqlx-bind-address=127.0.0.1 --mysqlx-port=33060
+        restart: always

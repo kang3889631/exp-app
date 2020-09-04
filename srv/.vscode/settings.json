@@ -1,0 +1,148 @@
+{
+    // Editor
+    "editor.fontSize": 16,
+    "editor.fontFamily": "'Go Mono', Consolas, 'Courier New', monospace",
+    "editor.minimap.enabled": false,
+    "editor.cursorStyle": "block",
+    "editor.cursorBlinking": "solid",
+    // NOTE: https://stackoverflow.com/questions/38216541/visual-studio-code-how-to-resolve-merge-conflicts-with-git
+    "editor.codeLens": true,
+    "editor.formatOnSave": true,
+    // NOTE: https://stackoverflow.com/questions/29972396/how-can-i-customize-the-tab-to-space-conversion-factor
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "[typescript]": {
+        "editor.tabSize": 4,
+    },
+    "[json]": {
+        "editor.tabSize": 4,
+    },
+    //"[scss]": {
+    //    "editor.tabSize": 4,
+    //},
+    // SCSS Formatter
+    "scssFormatter.tabWidth": 4,
+    "scssFormatter.useTabs": false,
+    // Files
+    "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+    // Exclude directory
+    // Configure glob patterns of file paths to exclude from file watching.
+    // Patterns must match on absolute paths (i.e. prefix with ** or the full
+    // path to match properly). Changing this setting requires a restart. When
+    // you experience Code consuming lots of cpu time on startup, you can
+    // exclude large folders to reduce the initial load.
+    // https://stackoverflow.com/questions/33258543/how-can-i-exclude-a-directory-from-visual-studio-code-explore-tab
+    // https://stackoverflow.com/questions/31639563/filter-files-shown-in-visual-studio-code
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/__pycache__": true,
+        "**/node_modules": true,
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        //"**/cliapp": true,
+        //"**/cliapp/": true,
+        //"**/cliapp/*/**": true,
+        "**/site-packages/*/**": true,
+        //"**/cliapp/node_modules/*/**": true,
+        "**/node_modules/*/**": true,
+        "**/.mypy_cache/*/**": true,
+        "**/.pyre/*/**": true,
+    },
+    // Miscellaneous
+    "workbench.editor.enablePreview": false,
+    "window.zoomLevel": 0,
+    "timeline.showView": true,
+    // Git
+    "git.enabled": true,
+    "git.autofetch": false,
+    // GitLens
+    // NOTE: https://github.com/eamodio/vscode-gitlens/issues/54
+    "gitlens.codeLens.enabled": false,
+    //"gitlens.codeLens.recentChange.enabled": false,
+    //"gitlens.codeLens.authors.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    //"gitlens.mode.active": "zen",
+    //"gitlens.views.lineHistory.enabled": false,
+    // Vim
+    "vim.useSystemClipboard": false,
+    "vim.smartcase": false,
+    "vim.ignorecase": false,
+    "vim.hlsearch": true,
+    // Highlight keywords
+    "todohighlight.keywords": [
+        "NOTE:",
+        "DEBUG",
+        "WARNING"
+    ],
+    // HTML
+    "html.format.wrapAttributes": "force-expand-multiline",
+    "html.mirrorCursorOnMatchingTag": false,
+    // Go
+    "go.formatTool": "gofmt",
+    "go.useLanguageServer": true,
+    "go.buildOnSave": "off",
+    "go.installDependenciesWhenBuilding": false,
+    "go.buildFlags": [
+        "-v",
+        "-x",
+        "-mod",
+        "vendor"
+    ],
+    "go.addTags": {
+        "options": "json="
+    },
+    // Python
+    //"python.venvPath": "~/.venv",
+    "python.pythonPath": "~/.venv/mysite/bin/python3",
+    "python.jediEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.linting.pylintArgs": [
+        // NOTE: For the complete list of Pylint messages, see readable-pylint-messages:
+        // https://github.com/janjur/readable-pylint-messages/blob/master/README.md
+        //
+        // https://stackoverflow.com/questions/45135263/class-has-no-objects-member
+        "--load-plugins=pylint_django",
+        // Disable snake_case naming style
+        "--disable=C0103",
+        // Disable unused import
+        "--disable=W0611",
+    ],
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--ignore-missing-imports",
+        //"--follow-imports=silent",
+        "--show-column-numbers",
+        "--strict"
+    ],
+    "python.formatting.autopep8Args": [
+        "--max-line-length=200",
+        // Disable import sorting
+        // https://stackoverflow.com/questions/54015604/disable-python-import-sorting-in-vscode
+        "--ignore=E402",
+    ],
+    // SSH
+    "remote.SSH.useLocalServer": false,
+    //"sshfs.configs": [
+    //    {
+    //        "host": "192.168.6.88",
+    //        "name": "ubun-exp",
+    //        "privateKeyPath": "H:\\jun\\key\\ubun-exp.ppk",
+    //        "root": "/home/jun",
+    //        "username": "jun"
+    //    }
+    //]
+}

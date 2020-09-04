@@ -1,0 +1,23 @@
+<form [formGroup]="profileForm">
+    <label>
+        First Name:
+        <input
+            type="text"
+            formControlName="firstName"
+            (keyup)="onFirstNameChanged($event)"
+        >
+    </label>
+
+    <label>
+        Last Name:
+        <input
+            type="text"
+            formControlName="lastName"
+        >
+    </label>
+</form>
+
+<button
+    type="button"
+    (click)="onSaveBtnClicked($event)"
+>Save</button>
